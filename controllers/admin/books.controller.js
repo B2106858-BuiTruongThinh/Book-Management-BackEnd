@@ -37,9 +37,9 @@ const getOne = async (req, res) => {
 const updateOne = async (req, res) => {
   try {
     const bookId = req.params.id;
-    const existingBook = await Book.findById(bookId);
+    const newBook = await Book.findById(bookId);
 
-    if (!existingBook) {
+    if (!newBook) {
       return res.status(404).json({ message: `Cannot find book with ID: ${bookId}` });
     }
     const data = {

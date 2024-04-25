@@ -101,7 +101,7 @@ const borrowBook = async (req, res) => {
     }
 }
 
-const deleteBookFromBorrow = asyncHandler(async (req, res) => {
+const deleteBook = asyncHandler(async (req, res) => {
     try {
         const tokenUser = req.cookies.tokenUser;
         const id = req.params.id;
@@ -147,7 +147,7 @@ const statusBookReturn = async (req, res) => {
     }
 };
 
-const getNumberBookBorrowed = asyncHandler(async (req, res) => {
+const getNumberBook = asyncHandler(async (req, res) => {
     try {
         const readers = await Reader.find({});
         let borrowedBookQuantity = 0;
@@ -170,7 +170,7 @@ module.exports = {
     getInfor,
     getAll,
     borrowBook,
-    deleteBookFromBorrow,
+    deleteBook,
     statusBookReturn,
-    getNumberBookBorrowed,
+    getNumberBook,
 }

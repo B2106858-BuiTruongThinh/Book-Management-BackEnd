@@ -1,24 +1,24 @@
 const bcrypt = require('bcrypt');
 const Reader = require('../../models/reader.model');
 
-const loginPost = async (req, res, next) => {
+const login = async (req, res, next) => {
   try {
-    const enteredEmail = req.body.email;
-    const enteredPassword = req.body.password;
+    const Email = req.body.email;
+    const Password = req.body.password;
 
-    const user = await Reader.findOne({ email: enteredEmail });
+    const user = await Reader.findOne({ email: Email });
 
     if (!user) {
       res.json('wrong info');
       return;
     }
 
-    if (!enteredPassword) {
+    if (!Password) {
       res.json('wrong info');
       return;
     }
 
-    if (enteredPassword != user.password ) {
+    if (Password != user.password ) {
       res.json('wrong info');
       return;
     }
@@ -42,6 +42,6 @@ const logout = async (req, res) => {
 }
 
 module.exports = {
-  loginPost,
+  login,
   logout
 }

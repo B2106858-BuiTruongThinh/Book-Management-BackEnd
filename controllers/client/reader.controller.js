@@ -83,12 +83,12 @@ const borrowBook = async (req, res) => {
             } else if (book.quantity - borrowedBookQuantity - newBorrow.quantity < 0) {
                 return res.status(400).json({ message: "Borrowed book quantity has reached the limit" });
             }
-            const existingBook = reader.borrow.find(book => book.id_book === newBorrow.id_book);
-            if (existingBook) {
-                existingBook.quantity += newBorrow.quantity;
-                existingBook.borrowDate = newBorrow.borrowDate || '01/01/2024';
-                existingBook.returnDate = newBorrow.returnDate || '31/12/2024';
-                existingBook.status = newBorrow.status || "processing";
+            const newBookReturn = reader.borrow.find(book => book.id_book === newBorrow.id_book);
+            if (newBookReturn) {
+                newBookReturn.quantity += newBorrow.quantity;
+                newBookReturn.borrowDate = newBorrow.borrowDate || '01/01/2024';
+                newBookReturn.returnDate = newBorrow.returnDate || '31/12/2024';
+                newBookReturn.status = newBorrow.status || "processing";
             } else {
                 reader.borrow.push(newBorrow);
             }

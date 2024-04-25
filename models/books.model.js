@@ -10,7 +10,6 @@ const bookSchema = new mongoose.Schema({
     publisher: String,
     publisherAddress: String,
     author: String,
-    thumbnail: String,
     slug: {
         type: String,
         slug: "name",

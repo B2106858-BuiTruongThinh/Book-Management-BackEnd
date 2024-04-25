@@ -9,5 +9,4 @@ module.exports = (app) => {
   app.use("/books",bookRoutes);
   app.use("/reader", readerRoutes);
   app.use("/auth", authRoutes);
-  app.post('/reader/register', controllerReader.create);
 }

@@ -8,7 +8,7 @@ const login = async (req, res, next) => {
 
     const employee = await Account.findOne({ email: Email });
 
-    if (!user) {
+    if (!employee) {
       res.json('wrong info');
       return;
     }
